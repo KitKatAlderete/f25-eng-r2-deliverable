@@ -53,7 +53,13 @@ const speciesSchema = z.object({
     .transform((val) => (!val || val.trim() === "" ? null : val.trim())),
 });
 
-export default function SpeciesDetailsDialog({ species, userId }: { species: Species; userId: string }) {
+type SpeciesWithAuthor = Species & {
+  profiles?: {
+    display_name: string;
+  };
+};
+
+export default function SpeciesDetailsDialog({ species, userId }: { species: SpeciesWithAuthor; userId: string }) {
   // Control open/closed state of the dialog
   const [open, setOpen] = useState<boolean>(false);
   // State variable to track toggleable editing mode of form
@@ -327,7 +333,7 @@ export default function SpeciesDetailsDialog({ species, userId }: { species: Spe
             {/* Author Information */}
             <div>
               <h3 className="italic text-gray-600">Added by</h3>
-              <p className="text-lg font-semibold text-white">{species.profiles?.display_name || "Unknown Author"}</p>
+              <p className="text-lg font-semibold text-white">{species.profiles?.display_name ?? "Unknown Author"}</p>
             </div>
 
             {/* Action Buttons */}

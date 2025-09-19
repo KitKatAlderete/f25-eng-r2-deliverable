@@ -28,7 +28,7 @@ export default function SpeciesCard({ species, userId }: { species: Species; use
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       {/* Replace the button with the detailed view dialog. */}
       {/* Dialog box for details */}
-      <SpeciesDetailsDialog species={species} userId={userId} />
+      <SpeciesDetailsDialog species={species} userId={userId ?? ""} />
     </div>
   );
 }

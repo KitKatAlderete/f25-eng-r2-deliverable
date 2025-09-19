@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import AddSpeciesDialog from "./add-species-dialog";
 import SpeciesCard from "./species-card";
 
+
 export default async function SpeciesList() {
   // Create supabase server component client and obtain user session from stored cookie
   const supabase = createServerSupabaseClient();
